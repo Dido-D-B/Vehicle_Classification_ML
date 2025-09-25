@@ -1,58 +1,65 @@
-# Vehicle Classification with Supervised and Unsupervised Learning
+# Prospect Auto - Vehicle Classification (Supervised and Unsupervised Learning)
 
-## Project Summary
+End-to-end machine learning project for classifying vehicle types (bus, car, van) from **geometric silhouette features**. You’ll find both supervised models (LogReg, SVM, Random Forest, XGBoost) and unsupervised clustering (PCA + K-Means, DBSCAN), with clear notebooks and a concise PDF report.
 
-This project explores both **supervised** and **unsupervised** machine learning techniques to classify vehicles (Bus, Car, Van) based on geometric features extracted from silhouette images. It was developed for Prospect Auto, a car repair chain aiming to automate vehicle recognition.
+**Dataset**
 
----
+* 18 numerical features extracted from vehicle silhouettes
+* 3 classes: Bus, Car, Van
+* Moderate class imbalance; PCA used for clustering prep. 
 
-## Notebooks Overview
+## Project Structure
 
-### 1. EDA
+```
+├── Data/
+│   ├── vehicle_raw.csv
+│   ├── processed_X_train.csv
+│   ├── processed_X_test.csv
+│   ├── processed_y_train.csv
+│   ├── processed_y_test.csv
+│   ├── processed_features_scaled.csv
+│   └── processed_features_pca.csv
+├── Notebooks/
+│   ├── EDA_Prospect_Auto.ipynb
+│   ├── Preprocessing_Prospect_Auto.ipynb
+│   ├── Supervised_Classification_Prospect_Auto.ipynb
+│   └── Unsupervised_Clustering_Prospect_Auto.ipynb
+├── Detailed_Report.pdf
+└── README.md
+```
+
+## Project Overview
+
+### EDA
+
 - Explores class distributions and feature relationships
 - Identifies overlap in feature space that justifies ML modeling
 
-### 2. Preprocessing
+### Preprocessing
 - Cleans and scales the dataset
 - Splits features/targets for supervised models
 - Applies PCA for unsupervised analysis
 
-### 3. Supervised Classification
+### Supervised Classification
 - Models: Logistic Regression, Decision Tree, Random Forest, SVM, XGBoost
 - Best Performers: Logistic Regression and SVM (~99.4% accuracy)
 - Metrics: Accuracy, Confusion Matrix, Classification Report
 
-### 4. Unsupervised Clustering
+### Unsupervised Clustering
 - Techniques: PCA, K-Means, DBSCAN
 - K-Means captured 3 clusters aligned with classes (Silhouette Score: 0.30)
 - DBSCAN struggled due to feature distribution (Score: 0.08)
 
----
+## Results
 
-## Tech Stack
-
-- Python
-- Pandas, NumPy, Matplotlib, Seaborn, and Scikit-learn
-
----
-
-## Files & Outputs
-
-- `processed_X_train.csv`: Scaled training features  
-- `processed_X_test.csv`: Scaled test features  
-- `processed_y_train.csv`: Training labels  
-- `processed_y_test.csv`: Test labels  
-- `processed_features_pca.csv`: PCA-reduced dataset for clustering
-
----
+- **Supervised**: Logistic Regression and SVM reached ~99.4% accuracy on test data; simple linear models beat more complex trees here.  ￼
+- **Unsupervised**: K-Means uncovered meaningful structure (silhouette ≈ 0.30) while DBSCAN performed poorly (silhouette ≈ 0.08) on these uniform features.  ￼
 
 ## Key Takeaways
 
 - Simpler models (Logistic Regression, SVM) outperformed complex ones
 - K-Means provided insightful clustering, even without labels
 - The Bus class proved most challenging to classify
-
----
 
 ## Author
 
